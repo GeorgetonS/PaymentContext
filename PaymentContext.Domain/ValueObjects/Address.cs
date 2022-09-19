@@ -1,4 +1,5 @@
 ﻿using PaymentContext.Shared.ValueObject;
+using Flunt.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,17 @@ public class Address : ValueObject
         State = state;
         Country = country;
         ZipCode = zipCode;
+
+        AddNotifications(new Contract()
+        .Requires()
+        .HasMinLen(Street, 3, "Address.Street", " rua deve conter pelo menos 3 Caracteres")
+        .HasMinLen(Number, 1, "Address.Number", "O numero deve conter pelo menos 1 Caracteres")
+        .HasMinLen(Neighborhood, 3, "Address.Neighborhood", "O Bairro deve conter pelo menos 3 Caracteres")
+        .HasMinLen(City, 3, "Address.City", "A cidade deve conter pelo menos 3 Caracteres")
+        .HasMinLen(State, 3, "Address.State", "O estado deve conter pelo menos 3 Caracteres")
+        .HasMinLen(Country, 3, "Address.Country", "Cidade deve conter pelo menos 3 Caracteres")
+        .HasMinLen(ZipCode, 8, "Address.ZipCode", "CEP deve conter pelo menos 8 Caracteres")
+);
     }
 
     public string Street { get; private set; }
