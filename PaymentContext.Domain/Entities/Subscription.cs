@@ -31,7 +31,8 @@ public class Subscription : Entity
             .Requires()
             .IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", "A data do pagamento deve ser futura")
             );
-        if(Valid) //Só adiciona se for valido
+
+        if(Valid) 
         _payments.Add(payment);
     }
     public void Activate()
