@@ -11,5 +11,5 @@ public interface IStudentRepository
 {
     bool DocumentExists(string document);
     bool EmailExists(string email);
-    void CreateSubscription(Student);
+    void CreateSubscription(Student student);
 }

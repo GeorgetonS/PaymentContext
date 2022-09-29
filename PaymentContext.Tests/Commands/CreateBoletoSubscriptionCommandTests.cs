@@ -1,21 +1,32 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PaymentContext.Domain.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PaymentContext.Domain.Entities;
+using PaymentContext.Domain.Enums;
+using PaymentContext.Domain.ValueObjects;
 
 namespace PaymentContext.Tests.Commands;
 [TestClass]
 public class CreateBoletoSubscriptionCommandTests
 {
     [TestMethod]
-    public void ReturneErroSeONomeForInvalido()
+    public void RetorneErroSeONomeForInvalido()
     {
         var command = new CreateBoletoSubscriptionCommand();
-        command.FirstName = "";
+        command.FirstName = "Af";
+        command.LastName = "Bo";
+
         command.Validate();
         Assert.AreEqual(false, command.Valid);
+    }
+
+    [TestMethod]
+    public void RetorneSucessoSeONomeForValido()
+    {
+        var command = new CreateBoletoSubscriptionCommand();
+        command.FirstName = "Jokerson";
+        command.LastName = "Santos";
+
+        command.Validate();
+        Assert.AreEqual(true, command.Valid);
     }
 }

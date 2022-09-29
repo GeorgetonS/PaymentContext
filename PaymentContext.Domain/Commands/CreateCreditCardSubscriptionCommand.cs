@@ -2,6 +2,7 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 using PaymentContext.Domain.Enums;
+using PaymentContext.Shared.Commands;
 
 namespace PaymentContext.Domain.Commands;
 
@@ -11,9 +12,9 @@ public class CreateCreditCardSubscriptionCommand : Notifiable, ICommand
     public string LastName { get; set; }
     public string Document { get; set; }
     public string Email { get; set; }
-    public string CardHolderName { get; private set; }
-    public string CardNumber { get; private set; }
-    public string LastTransactionNumber { get; private set; }
+    public string CardHolderName { get;  set; }
+    public string CardNumber { get;  set; }
+    public string LastTransactionNumber { get;  set; }
     public string PayerNumber { get; set; }
     public DateTime PaidDate { get; set; }
     public DateTime ExpireDate { get; set; }
